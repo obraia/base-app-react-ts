@@ -1,10 +1,13 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { BrowserRouter, useLocation } from 'react-router-dom';
 import Routes from './routes';
+import { ThemeProvider } from 'styled-components';
 
-import ThemeProvider from './context/theme';
+import userPersistedState from './utils/userPersistedState';
 
 import GlobalStyle from './styles/global';
+import light from './styles/themes/light';
+import dark from './styles/themes/dark';
 import 'typeface-poppins';
 
 import { Container } from './styles';
@@ -43,8 +46,10 @@ const menuItems: any[] = [
 
 const App = () => {
 
+  const [theme, setTheme] = userPersistedState('theme', dark);
+
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <BrowserRouter>
         <Sidebar menuItems={menuItems} />
