@@ -28,6 +28,10 @@ export default createGlobalStyle`
         cursor: pointer;
     }
 
+    input{
+        border: none;
+    }
+
     ::-webkit-scrollbar {
         width: 8px;
         height: 8px;
