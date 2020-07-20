@@ -7,7 +7,7 @@ export const Container = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 10px 0 15px;
 `;
 
 export const PageTitle = styled.h1`
