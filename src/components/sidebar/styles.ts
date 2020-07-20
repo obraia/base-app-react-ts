@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { darken, lighten } from 'polished';
 
 export const Container = styled.aside`
-    transition: flex .4s;
+    transition: background-color .2s ease-out, flex .4s ease-out;
     display: flex;
     flex: 0 0 250px;
     flex-direction: column;
@@ -11,7 +11,7 @@ export const Container = styled.aside`
     background-color: ${props => props.theme.colors.primary};
 
     @media only screen and (max-width: 1000px){
-        transition: flex .4s;
+        transition: background-color .2s ease-out, flex .4s ease-out;
         flex-basis: 80px;
     }
 
@@ -33,7 +33,7 @@ export const MenuList = styled.ul`
     }
 `;
 
-export const MenuItem = styled.li`
+export const MenuListItem = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;

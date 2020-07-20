@@ -1,35 +1,56 @@
-import React, { useState } from 'react';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-import { Container, MenuList, MenuItem, MenuItemName } from './styles';
+import { MenuItem } from '../../interfaces/Interfaces';
 
-interface MenuItem {
-    name: string;
-    route: string;
-    icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-}
+import { ReactComponent as DashboardIcon } from '../../assets/icons/chart-line-solid.svg';
+import { ReactComponent as InventoryIcon } from '../../assets/icons/box-open-solid.svg';
+import { ReactComponent as ProductsIcon } from '../../assets/icons/scanner-solid.svg';
+import { ReactComponent as ConfigurationsIcon } from '../../assets/icons/cog-solid.svg';
 
-const Sidebar = (props: { menuItems: MenuItem[] }) => {
+import { Container, MenuList, MenuListItem, MenuItemName } from './styles';
 
-    const [isExpanded, setIsExpanded] = useState(true);
-    const location = useLocation();
+const menuItems: MenuItem[] = [
+  {
+    name: 'Dashboard',
+    route: '/dashboard',
+    icon: DashboardIcon
+  },
+  {
+    name: 'Estoque',
+    route: '/inventory',
+    icon: InventoryIcon
+  },
+  {
+    name: 'Produtos',
+    route: '/products',
+    icon: ProductsIcon
+  },
+  {
+    name: 'Configurações',
+    route: '/configurations',
+    icon: ConfigurationsIcon
+  }
+];
 
-    console.log(location.pathname);
+const Sidebar = () => {
 
-    return (
-        <Container className={!isExpanded ? 'closed' : ''}>
-            <MenuList>
-                {props.menuItems.map(menuItem => (
-                    <MenuItem key={menuItem.name} className={menuItem.route === location.pathname ? 'selected' : ''}>
-                        <Link to={menuItem.route}>
-                            {<menuItem.icon />}
-                            <MenuItemName className={!isExpanded ? 'closed' : ''}>{menuItem.name}</MenuItemName>
-                        </Link>
-                    </MenuItem>
-                ))}
-            </MenuList>
-        </Container>
-    );
+  const location = useLocation();
+
+  return location.pathname !== '/authenticate' ? (
+    <Container>
+      <MenuList>
+        {menuItems.map(menuItem => (
+          <MenuListItem key={menuItem.name} className={menuItem.route === location.pathname ? 'selected' : ''}>
+            <Link to={menuItem.route}>
+              {<menuItem.icon />}
+              <MenuItemName>{menuItem.name}</MenuItemName>
+            </Link>
+          </MenuListItem>
+        ))}
+      </MenuList>
+    </Container>
+  ) : null;
 }
 
 export default Sidebar;

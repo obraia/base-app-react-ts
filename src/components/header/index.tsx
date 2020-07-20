@@ -15,7 +15,7 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   }
 
-  return (
+  return location.pathname !== '/authenticate' ? (
     <Container>
       <PageTitle>{location.pathname}</PageTitle>
       <ButtonMenu onClick={toggleMenu}>
@@ -23,7 +23,7 @@ const Header = () => {
       </ButtonMenu>
       {menuOpen && <HeaderMenu toggleMenu={toggleMenu}/>}
     </Container>
-  );
+  ) : null;
 }
 
 export default Header;
