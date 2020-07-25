@@ -18,6 +18,11 @@ export const Container = styled.form`
     }
 `;
 
+export const Title = styled.h2`
+    color: ${props => props.theme.colors.textPrimary};
+    margin-bottom: 20px;
+`;
+
 export const Group = styled.span`
     width: 100%;
     display: flex;

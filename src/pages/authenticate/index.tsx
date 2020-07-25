@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useHistory } from 'react-router-dom';
 
-import Login from '../../components/login';
+import Login from '../../components/formLogin';
 
 import { Container } from './styles';
 
